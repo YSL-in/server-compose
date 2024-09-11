@@ -1,4 +1,3 @@
-version: '3'
 services:
   hedgedoc-server:
     image: quay.io/hedgedoc/hedgedoc
