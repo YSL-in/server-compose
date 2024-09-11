@@ -4,7 +4,7 @@ This is the centralized proxy server and database for all the servers. The main 
 
 ```bash
 docker network create server-compose-network
-docker volume create server-compose-volume
+docker volume create server-compose-database
 docker-compose up -d
 ```
 
@@ -14,19 +14,23 @@ In order to utilize the proxy server,
 
 * Join the network **`server-compose-network`**.
 * If the database is involved, initialize the database by
-    ```bash
-    (source .env && ./init-db NEW_DB_USER NEW_DB_PASS [DATABASE])
-    ```
-    Then database will be accessible by **`postgres-server`**.
+
+  ```bash
+  (source .env && ./init-db NEW_DB_USER NEW_DB_PASS [DATABASE])
+  ```
+
+  Then database will be accessible by **`postgres-server`**.
 
 * After launching the application, add a new **`location`** section for the application and reload the proxy server by
-    ```bash
-    docker exec proxy-server nginx -s reload
-    ```
-    There are two ways to set up **`proxy_pass`**.
 
-    * Expose the application and then use **`localhost:POST`**.
-    * Use the endpoint of the application which by default is the service name in the *docker-compose.yaml*.
+  ```bash
+  docker exec proxy-server nginx -s reload
+  ```
+
+  There are two ways to set up **`proxy_pass`**.
+
+  * Expose the application and then use **`localhost:POST`**.
+  * Use the endpoint of the application which by default is the service name in the *docker-compose.yaml*.
 
 ## Backup the database
 
