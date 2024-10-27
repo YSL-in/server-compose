@@ -1,0 +1,16 @@
+[submodule "taiga-server"]
+	path = taiga-server
+	url = https://github.com/taigaio/taiga-docker.git
+
+### To update the submodule
+# git fetch origin
+# git rebase origin/main
+# git submodule update --remote --rebase
+
+### To modify the submodule
+# cd SUBMODULE/
+# git push
+# cd ../
+# git add SUBMODULE/
+# git commit -m "UPDATE SUBMODULE"
+# git push
